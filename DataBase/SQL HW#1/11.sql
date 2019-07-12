@@ -1,0 +1,6 @@
+select NAME, ADDRESS
+from MOVIEEXEC
+where NETWORTH NOT IN(
+    select e1.NETWORTH
+    from MOVIEEXEC e1, MOVIEEXEC e2
+    where e1.NETWORTH < e2.NETWORTH);
