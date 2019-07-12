@@ -1,0 +1,162 @@
+<tbody><tr bgcolor="#ffc0ff"> <th> TABLE </th><th> ATTRIBUTE
+</th><th> TYPE </th><th> DESCRIPTION </th></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="10" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=movie">Movie </a>
+</font> 
+</td><td> title </td><td> VARCHAR(255) </td><td> Movie Title</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> year </td><td> NUMBER(4) </td><td> Movie Year</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> length </td><td> NUMBER(3) </td><td> Length</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> inColor </td><td> CHAR(1) </td><td> Color or BW</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> studioName </td><td> VARCHAR(30) </td><td> Producing Studio Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> producerNo </td><td> NUMBER(6) </td><td> Producer Number</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> primary key (title, year) </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (producerNo) references 
+MovieExec (certNo) <br> on delete set null </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (studioName) references 
+Studio (name) <br> on delete set null </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> check(length &gt; 50 and year &gt; 1900 and year &lt;= 2017) </td></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="6" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=starsin">StarsIn</a></font> 
+</td><td> movieTitle </td><td> VARCHAR(255) </td><td> Movie Title</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> movieYear </td><td> NUMBER(4) </td><td> Movie Year</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> starName </td><td> VARCHAR(30) </td><td> Star Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> primary key (movieTitle, movieYear, starName) </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (movieTitle, movieYear) references 
+Movie (title, year) <br> on delete cascade </td></tr>
+<table width="80%" border="0" cellpadding="5" cellspacing="3" align="center">
+<caption algin="top">
+<img src="/~shhong/Images/pencil.gif"> 
+DDL Script file to build Movie DB
+<a onmouseover="setStatus('Movie DB SQL');return true" href="download/MovieDB.sql"> [CLICK]
+</a>
+
+</caption>
+<tbody><tr bgcolor="#ffc0ff"> <th> TABLE </th><th> ATTRIBUTE
+</th><th> TYPE </th><th> DESCRIPTION </th></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="10" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=movie">Movie </a>
+</font> 
+</td><td> title </td><td> VARCHAR(255) </td><td> Movie Title</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> year </td><td> NUMBER(4) </td><td> Movie Year</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> length </td><td> NUMBER(3) </td><td> Length</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> inColor </td><td> CHAR(1) </td><td> Color or BW</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> studioName </td><td> VARCHAR(30) </td><td> Producing Studio Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> producerNo </td><td> NUMBER(6) </td><td> Producer Number</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> primary key (title, year) </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (producerNo) references 
+MovieExec (certNo) <br> on delete set null </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (studioName) references 
+Studio (name) <br> on delete set null </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> check(length &gt; 50 and year &gt; 1900 and year &lt;= 2017) </td></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="6" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=starsin">StarsIn</a></font> 
+</td><td> movieTitle </td><td> VARCHAR(255) </td><td> Movie Title</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> movieYear </td><td> NUMBER(4) </td><td> Movie Year</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> starName </td><td> VARCHAR(30) </td><td> Star Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> primary key (movieTitle, movieYear, starName) </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (movieTitle, movieYear) references 
+Movie (title, year) <br> on delete cascade </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (starName) references MovieStar 
+(name) <br> on delete
+cascade </td></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="4" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=moviestar">MovieStar</a></font> 
+</td><td> name </td><td> VARCHAR(30) primary key </td><td> Star's Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> address </td><td> VARCHAR(255) </td><td> Home Address</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> gender </td><td> CHAR(6) <br> check(gender in ('male', 'female')) 
+</td><td> Gender</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> birthdate </td><td> DATE </td><td> Birthdate</td></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="4" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=movieexec">MovieExec</a></font> 
+</td><td> name </td><td> VARCHAR(30) </td><td> Movie Executor's Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> address </td><td> VARCHAR(255) </td><td> Executor's Address</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> certNo </td><td> NUMBER(6) primary key </td><td> Executor's ID</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> netWorth </td><td> NUMBER(38) </td><td> Total Worth</td></tr>
+
+<tr bgcolor="#c0c0ff"> <td rowspan="4" align="center"> 
+<font color="#c00000"><a href="oci8/moviedb.php?tname=studio">Studio</a></font> 
+</td><td> name </td><td> VARCHAR(30) primary key </td><td> Studio Name</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> address </td><td> VARCHAR(255) </td><td> Office Address</td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td> presNo </td><td> NUMBER(6) </td><td> President's ID </td></tr>
+
+<tr bgcolor="#c0c0ff">
+<td colspan="3"> foreign key (presNo) references MovieExec (certNo) 
+<br> on delete set null </td></tr>
+
+</tbody></table>
